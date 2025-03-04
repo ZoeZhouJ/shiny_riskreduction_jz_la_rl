@@ -11,8 +11,9 @@ ui <- navbarPage(
          understand the relationships between natural disasters, coral reef health, and restoration benefits."),
          p("The app is divided into three main pages:"),
          tags$ul(
-           tags$li("Page 1: Hurricane Impact Explorer - Explore the economic and social impacts of hurricanes."),
-           tags$li("Page 2: Flood Extent Projection - Visualize flood extent maps based on coral cover and storm return intervals."),
+           tags$li("Page 1: Summary of Project and Data Sources"),
+           tags$li("Page 2: Hurricane Impact Explorer - Explore the economic and social impacts of hurricanes.")
+           tags$li("Page 3: Flood Extent Projection - Visualize flood extent maps based on coral cover and storm return intervals."),
          )
              ),#END sidebarPanel
          mainPanel(
