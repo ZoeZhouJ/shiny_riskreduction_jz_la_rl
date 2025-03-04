@@ -118,26 +118,36 @@ ui <- navbarPage(
            sidebarLayout(
              # flood sidebarPanel
              sidebarPanel(
-               "placeholder: slider and picker input goes here",
-               #sliderInput(inputID = "return_interval_input",
-               #            label = "Select Storm return interval",
-               #            min = 10,
-               #            max = 500,
-               #            value = 25),
                
-               #pickerInput(inputId = "coral_cover_input",
-               #            label = "Select Coral Cover:",
-               #            choices = unique(df$coral),
-               #            selected = c("sandy", "50%"),
-               #            multiple = TRUE,
-                #           options = pickerOptions(actionsBox = TRUE)
-               #),
+               radioButtons(inputId = "return_interval_input",
+                           label = "Select Return Period (years):",
+                           choices = return_periods,
+                           selected = "500"),
+               
+               selectInput(inputId = "scenario_input",
+                           label = "Select Restoration Scenario:",
+                           choices = scenarios,
+                           selected = "base",
+                           #multiple = TRUE,
+                           #options = pickerOptions(actionsBox = TRUE)
+               ),
+               helpText("Flood scenarios are based on wave-driven total water levels for various return periods.")
              ), # END flood sidebarPanel
              # flood mainPanel
              mainPanel(
                "placeholder: map output go here",
                # flood map output
-               plotOutput(outputId = "flood_map_output"),
+               # leaflet box ----
+               box(width = 12,
+                   height = 600,
+                   title = tags$strong("Flood Extent Projection Map"),
+                   
+                   # leaflet output ----
+                   leafletOutput(outputId = "flood_map_output") |> 
+                     withSpinner(type = 1, color = "blue")
+                   
+               ), # END leaflet box
+        
              ) #END flood mainPanel
            ) # END flood sidebarLayout
            
