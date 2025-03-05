@@ -11,20 +11,17 @@ library(fresh)
 library(sf)
 library(dplyr)
 
+
 #........Load shapefiles..........
-# Define available return periods and scenarios
+# Define inputs
 return_periods <- c("10", "50", "100", "500")
 scenarios <- c("base", "ecological_25", "structural_05", "structural_25")
 
 
 data_folder <- "../raw-data/PuertoRico_Current_Restored"
 
-load_shapefile <- function(return_period, scenario) {
-  file_name <- paste0("PuertoRico_rp", return_period, "_", scenario, ".shp")
-  file_path <- file.path(data_folder, file_name)
-  if (!file.exists(file_path)) {
-    stop(paste("File not found:", file_path))
-  }
+load_shapefile <- function(return_period, scenario, location_folder, location) {
+  file_path <- file.path("..", "raw-data", location_folder, paste0(location, "_rp", return_period, "_", scenario, ".shp"))
   
   shapefile <- st_read(file_path, quiet = TRUE)
   

@@ -41,10 +41,10 @@ ui <- navbarPage(
            h3("Acknowledgments"),
            p("This app is built using publicly available datasets and reports from the USGS and Science Advances. 
          It aims to provide actionable insights for disaster management, coastal protection, and environmental restoration."),
-           img(src="https://eos.org/wp-content/uploads/2023/11/hurricane-lee.jpg", width = 800)
+         img(src="https://eos.org/wp-content/uploads/2023/11/hurricane-lee.jpg", width = 800)
          )
            )
-           
+         
   ), # END (Page 1) intro tabPanel
   
   # (Page 2) hurricane impact data viz tabPanel ----
@@ -118,24 +118,40 @@ ui <- navbarPage(
            sidebarLayout(
              # flood sidebarPanel
              sidebarPanel(
+               # Location selector
+               selectInput(inputId = "location_input",
+                           label = "Select Location:",
+                           choices = c("Florida", "Puerto Rico"),
+                           selected = "Puerto Rico",
+                           multiple = FALSE
+                           ),
                
-               radioButtons(inputId = "return_interval_input",
-                           label = "Select Return Period (years):",
-                           choices = return_periods,
-                           selected = "500"),
                
-               selectInput(inputId = "scenario_input",
+               selectInput(inputId = "zone_input",
+                           label = "Select Zone:",
+                           choices = NULL,
+                           selected = NULL
+               ),
+               
+               pickerInput(inputId = "scenario_input",
                            label = "Select Restoration Scenario:",
                            choices = scenarios,
                            selected = "base",
                            #multiple = TRUE,
-                           #options = pickerOptions(actionsBox = TRUE)
-               ),
+                           options = pickerOptions(actionsBox = TRUE)),
+               
+               radioButtons(inputId = "return_interval_input",
+                            label = "Select Return Period (years):",
+                            choices = return_periods,
+                            selected = "500"),
+               
+               
+               
                helpText("Flood scenarios are based on wave-driven total water levels for various return periods.")
              ), # END flood sidebarPanel
              # flood mainPanel
              mainPanel(
-               "placeholder: map output go here",
+               
                # flood map output
                # leaflet box ----
                box(width = 12,
@@ -147,7 +163,7 @@ ui <- navbarPage(
                      withSpinner(type = 1, color = "#18bc9c")
                    
                ), # END leaflet box
-        
+               
              ) #END flood mainPanel
            ) # END flood sidebarLayout
            
