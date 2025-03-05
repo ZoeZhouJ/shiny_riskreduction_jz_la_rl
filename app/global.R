@@ -34,11 +34,7 @@ load_shapefile <- function(return_period, scenario) {
 }
 
 
-# Define color palette for scenarios
-flood_palette <- colorFactor(
-  palette = c("darkred", "#9966CC", "salmon", "#993366"),
-  domain = c("base", "ecological_25", "structural_05", "structural_25")
-)
+
 
 #............custom ggplot theme (apply to both plots)...........
 myCustomTheme <- function() {

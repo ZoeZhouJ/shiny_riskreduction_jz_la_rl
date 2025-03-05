@@ -144,7 +144,7 @@ ui <- navbarPage(
                    
                    # leaflet output ----
                    leafletOutput(outputId = "flood_map_output") |> 
-                     withSpinner(type = 1, color = "blue")
+                     withSpinner(type = 1, color = "#18bc9c")
                    
                ), # END leaflet box
         
