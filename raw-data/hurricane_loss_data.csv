@@ -1,0 +1,145 @@
+﻿location,sublocation,value_type,return_interval,loss_usd
+Florida,Martin,infrastructure,10,0
+Florida,Martin,infrastructure,50,0
+Florida,Martin,infrastructure,100,0
+Florida,Martin,infrastructure,500,0
+Florida,Martin,economic,10,0
+Florida,Martin,economic,50,0
+Florida,Martin,economic,100,0
+Florida,Martin,economic,500,0
+Florida,Palm Beach,infrastructure,10,0
+Florida,Palm Beach,infrastructure,50,0
+Florida,Palm Beach,infrastructure,100,0
+Florida,Palm Beach,infrastructure,500,0
+Florida,Palm Beach,economic,10,0
+Florida,Palm Beach,economic,50,0
+Florida,Palm Beach,economic,100,0
+Florida,Palm Beach,economic,500,0
+Florida,Broward,infrastructure,10,246331
+Florida,Broward,infrastructure,50,2835
+Florida,Broward,infrastructure,100,5558
+Florida,Broward,infrastructure,500,0
+Florida,Broward,economic,10,446649
+Florida,Broward,economic,50,64393
+Florida,Broward,economic,100,0
+Florida,Broward,economic,500,0
+Florida,Miami-Dade,infrastructure,10,14
+Florida,Miami-Dade,infrastructure,50,24
+Florida,Miami-Dade,infrastructure,100,135
+Florida,Miami-Dade,infrastructure,500,21803
+Florida,Miami-Dade,economic,10,3369
+Florida,Miami-Dade,economic,50,1914
+Florida,Miami-Dade,economic,100,828
+Florida,Miami-Dade,economic,500,29667
+Florida,Upper Keys,infrastructure,10,895494
+Florida,Upper Keys,infrastructure,50,661698
+Florida,Upper Keys,infrastructure,100,1903740
+Florida,Upper Keys,infrastructure,500,2085372
+Florida,Upper Keys,economic,10,396874
+Florida,Upper Keys,economic,50,1181890
+Florida,Upper Keys,economic,100,1250125
+Florida,Upper Keys,economic,500,2420959
+Florida,Middle Keys,infrastructure,10,485211
+Florida,Middle Keys,infrastructure,50,755184
+Florida,Middle Keys,infrastructure,100,594333
+Florida,Middle Keys,infrastructure,500,746252
+Florida,Middle Keys,economic,10,23401
+Florida,Middle Keys,economic,50,8864
+Florida,Middle Keys,economic,100,8181
+Florida,Middle Keys,economic,500,9355
+Florida,Lower Keys,infrastructure,10,1244391
+Florida,Lower Keys,infrastructure,50,2333203
+Florida,Lower Keys,infrastructure,100,2471819
+Florida,Lower Keys,infrastructure,500,3339624
+Florida,Lower Keys,economic,10,2215173
+Florida,Lower Keys,economic,50,3417212
+Florida,Lower Keys,economic,100,2983484
+Florida,Lower Keys,economic,500,4307827
+Puerto Rico,San Juan,infrastructure,10,30537910
+Puerto Rico,San Juan,infrastructure,50,70712273
+Puerto Rico,San Juan,infrastructure,100,85974090
+Puerto Rico,San Juan,infrastructure,500,172710721
+Puerto Rico,San Juan,economic,10,774548626
+Puerto Rico,San Juan,economic,50,161653057
+Puerto Rico,San Juan,economic,100,199355743
+Puerto Rico,San Juan,economic,500,467909904
+Puerto Rico,Vega Baja,infrastructure,10,4800926
+Puerto Rico,Vega Baja,infrastructure,50,12649364
+Puerto Rico,Vega Baja,infrastructure,100,16340052
+Puerto Rico,Vega Baja,infrastructure,500,17493273
+Puerto Rico,Vega Baja,economic,10,4145176
+Puerto Rico,Vega Baja,economic,50,10667021
+Puerto Rico,Vega Baja,economic,100,13355375
+Puerto Rico,Vega Baja,economic,500,12967385
+Puerto Rico,Arecibo,infrastructure,10,7696233
+Puerto Rico,Arecibo,infrastructure,50,14394747
+Puerto Rico,Arecibo,infrastructure,100,19735782
+Puerto Rico,Arecibo,infrastructure,500,35458983
+Puerto Rico,Arecibo,economic,10,21417253
+Puerto Rico,Arecibo,economic,50,31116429
+Puerto Rico,Arecibo,economic,100,44358674
+Puerto Rico,Arecibo,economic,500,73516308
+Puerto Rico,Aquadilla,infrastructure,10,15671269
+Puerto Rico,Aquadilla,infrastructure,50,21587976
+Puerto Rico,Aquadilla,infrastructure,100,26322331
+Puerto Rico,Aquadilla,infrastructure,500,25445063
+Puerto Rico,Aquadilla,economic,10,25167917
+Puerto Rico,Aquadilla,economic,50,35490377
+Puerto Rico,Aquadilla,economic,100,48156591
+Puerto Rico,Aquadilla,economic,500,25322327
+Puerto Rico,Mayaguez,infrastructure,10,12717572
+Puerto Rico,Mayaguez,infrastructure,50,18049660
+Puerto Rico,Mayaguez,infrastructure,100,22330200
+Puerto Rico,Mayaguez,infrastructure,500,46206280
+Puerto Rico,Mayaguez,economic,10,36301471
+Puerto Rico,Mayaguez,economic,50,53188492
+Puerto Rico,Mayaguez,economic,100,60578111
+Puerto Rico,Mayaguez,economic,500,129777481
+Puerto Rico,Ponce,infrastructure,10,1938245
+Puerto Rico,Ponce,infrastructure,50,3925799
+Puerto Rico,Ponce,infrastructure,100,5262006
+Puerto Rico,Ponce,infrastructure,500,8043943
+Puerto Rico,Ponce,economic,10,10027029
+Puerto Rico,Ponce,economic,50,23253825
+Puerto Rico,Ponce,economic,100,24310735
+Puerto Rico,Ponce,economic,500,18459878
+Puerto Rico,Guayama,infrastructure,10,3998286
+Puerto Rico,Guayama,infrastructure,50,6469237
+Puerto Rico,Guayama,infrastructure,100,7897528
+Puerto Rico,Guayama,infrastructure,500,10754608
+Puerto Rico,Guayama,economic,10,9795486
+Puerto Rico,Guayama,economic,50,12193143
+Puerto Rico,Guayama,economic,100,15987119
+Puerto Rico,Guayama,economic,500,20136207
+Puerto Rico,Humacao,infrastructure,10,265684
+Puerto Rico,Humacao,infrastructure,50,500049
+Puerto Rico,Humacao,infrastructure,100,814054
+Puerto Rico,Humacao,infrastructure,500,2143190
+Puerto Rico,Humacao,economic,10,721958
+Puerto Rico,Humacao,economic,50,1545545
+Puerto Rico,Humacao,economic,100,2236331
+Puerto Rico,Humacao,economic,500,8346268
+Puerto Rico,Ceiba,infrastructure,10,12339703
+Puerto Rico,Ceiba,infrastructure,50,18206199
+Puerto Rico,Ceiba,infrastructure,100,25905996
+Puerto Rico,Ceiba,infrastructure,500,58033727
+Puerto Rico,Ceiba,economic,10,15759192
+Puerto Rico,Ceiba,economic,50,26589081
+Puerto Rico,Ceiba,economic,100,44843060
+Puerto Rico,Ceiba,economic,500,52022197
+Puerto Rico,Culebra,infrastructure,10,674067
+Puerto Rico,Culebra,infrastructure,50,1001887
+Puerto Rico,Culebra,infrastructure,100,995613
+Puerto Rico,Culebra,infrastructure,500,4273453
+Puerto Rico,Culebra,economic,10,782445
+Puerto Rico,Culebra,economic,50,841779
+Puerto Rico,Culebra,economic,100,919059
+Puerto Rico,Culebra,economic,500,1647678
+Puerto Rico,Vieques,infrastructure,10,337222
+Puerto Rico,Vieques,infrastructure,50,494649
+Puerto Rico,Vieques,infrastructure,100,512763
+Puerto Rico,Vieques,infrastructure,500,927453
+Puerto Rico,Vieques,economic,10,664555
+Puerto Rico,Vieques,economic,50,877788
+Puerto Rico,Vieques,economic,100,1153688
+Puerto Rico,Vieques,economic,500,1453345
