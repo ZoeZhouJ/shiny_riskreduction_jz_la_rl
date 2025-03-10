@@ -17,6 +17,7 @@ library(dplyr)
 return_periods <- c("10", "50", "100", "500")
 scenarios <- c("base", "ecological_25", "structural_05", "structural_25")
 
+data_folder2 <- "../raw-data"
 
 data_folder <- "../raw-data/PuertoRico_Current_Restored"
 
@@ -30,6 +31,9 @@ load_shapefile <- function(return_period, scenario, location_folder, location) {
   }
 }
 
+#hurricane data
+file_path <- file.path(data_folder2, "hurricane_loss_data.csv")
+hurricane_data <- read.csv(file_path)
 
 
 

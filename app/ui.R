@@ -66,21 +66,27 @@ ui <- navbarPage(
                         # Impact sidebarPanel ----
                         sidebarPanel(
                           "placeholder: impact histogram inputs here",
-                          # channel type pickerinput ----
-                          # pickerInput(inputId = "location_input",
-                          #             label = "Select location(s):",
-                          #             choices = unique(df$location),
-                          #             #selected = c("Florida", "Puerto Rico"),
-                          #             multiple = TRUE,
-                          #             options = pickerOptions(actionBox = TRUE)
-                          # ) # END pickerInput
+                          # channel type pickerinput ---- location
+                          pickerInput("location", "Select Location:", 
+                                      choices = c("Florida", "Puerto Rico", "Both"), 
+                                      selected = "Both", 
+                                      options = list(`actions-box` = TRUE, `live-search` = TRUE),
+                                      multiple = FALSE
+                              ),
+                          
+                          # PickerInput for return_interval
+                          pickerInput("return_interval", "Select Return Interval:", 
+                                      choices = c("10", "50", "100", "500", "All"), 
+                                      selected = "All", 
+                                      options = list(`actions-box` = TRUE, `live-search` = TRUE),
+                                      multiple = FALSE)
                         ), # END Impact sidebarPanel
                         
                         # Impact mainPanel ----
                         mainPanel(
                           "placeholder: impact histograms go here",
                           # impact histogram output
-                          plotOutput(outputId = "impact_histogram_output")
+                          plotOutput(outputId = "impact_histogram")
                         ), # END Impact mainPanel
                       ), # END impact sidebarLayout
              ), # END Impact tabPanel
