@@ -144,19 +144,9 @@ server <- function(input, output, session){
   })
   
   hurricane_filtered <- reactive({
-    hurricane_df <- hurricane_data  
-    
-    if (input$location != "Both") {
-      hurricane_df <- hurricane_df %>% filter(location == input$location)
-    }
-    
-    # Filter by return interval
-    if (input$return_interval != "All") {
-      hurricane_df <- hurricane_df %>% filter(return_interval == as.numeric(input$return_interval))
-    }
-    
-    return(hurricane_df)
-  
+      hurricane_df <- hurricane_data %>% 
+        filter(sublocation %in% input$location) %>% 
+        filter(return_interval == as.numeric(input$return_interval))
   })
   
   output$impact_histogram <- renderPlot ({
@@ -170,14 +160,16 @@ server <- function(input, output, session){
     data_range <- range(hurricane_impact$loss_usd, na.rm = TRUE)
     binwidth <- (data_range[2] - data_range[1]) / 15
     
-    ggplot(hurricane_impact, aes(x = loss_usd, fill = value_type)) +
-      geom_histogram(binwidth = binwidth, color = "black", position = "dodge") +
+    ggplot(hurricane_impact, aes(x= sublocation, y = loss_usd, fill = value_type)) +
+      geom_bar(stat = "identity", position = "dodge") +
       labs(title = "Histogram of Hurricane Losses",
-           x = "Loss Amount (in USD)",
-           y = "Frequency") +
+           x = "Locations",
+           y = "Loss Amount (in USD)") +
       scale_fill_manual(values = c("economic" = "turquoise", "infrastructure" = "grey")) +
       myCustomTheme() +
-      theme(legend.title = element_blank())
+      theme(
+        legend.title = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust =1))
   })
   
   

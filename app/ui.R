@@ -67,17 +67,19 @@ ui <- navbarPage(
                         sidebarPanel(
                           #"placeholder: impact histogram inputs here",
                           # channel type pickerinput ---- location
-                          pickerInput("location", "Select Location:", 
-                                      choices = c("Florida", "Puerto Rico", "Both"), 
-                                      selected = "Both", 
+                          pickerInput(inputId = "location", 
+                                      label = "Select Location:", 
+                                      choices = unique(hurricane_data$sublocation), #c("Florida", "Puerto Rico", "Both"), 
+                                      selected = unique(hurricane_data$sublocation), 
                                       options = list(`actions-box` = TRUE, `live-search` = TRUE),
-                                      multiple = FALSE
+                                      multiple = TRUE
                               ),
+                        
                           
                           # PickerInput for return_interval
                           pickerInput("return_interval", "Select Return Interval:", 
-                                      choices = c("10", "50", "100", "500", "All"), 
-                                      selected = "All", 
+                                      choices = c("10", "50", "100", "500"), 
+                                      selected = "500", 
                                       options = list(`actions-box` = TRUE, `live-search` = TRUE),
                                       multiple = FALSE)
                         ), # END Impact sidebarPanel
