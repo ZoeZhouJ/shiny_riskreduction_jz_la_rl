@@ -32,6 +32,8 @@ load_shapefile <- function(return_period, scenario, location_folder, location) {
   }
 }
 
+
+#.........Load Tabular Data..........
 #hurricane data
 file_path <- file.path(data_folder2, "hurricane_loss_data.csv")
 hurricane_data <- read.csv(file_path)

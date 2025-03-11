@@ -60,12 +60,12 @@ ui <- navbarPage(
              tabPanel(title = "Hurricane Impact",
                       
                       # Impact sidebarLayout ----
-                      "placeholder: impact data description here! (histogram)",
+                      #"placeholder: impact data description here! (histogram)",
                       sidebarLayout(
                         
                         # Impact sidebarPanel ----
                         sidebarPanel(
-                          "placeholder: impact histogram inputs here",
+                          #"placeholder: impact histogram inputs here",
                           # channel type pickerinput ---- location
                           pickerInput("location", "Select Location:", 
                                       choices = c("Florida", "Puerto Rico", "Both"), 
@@ -84,7 +84,7 @@ ui <- navbarPage(
                         
                         # Impact mainPanel ----
                         mainPanel(
-                          "placeholder: impact histograms go here",
+                          #"placeholder: impact histograms go here",
                           # impact histogram output
                           plotOutput(outputId = "impact_histogram")
                         ), # END Impact mainPanel
@@ -95,7 +95,7 @@ ui <- navbarPage(
              tabPanel(title = "Benefit",
                       
                       # Benefit sidebarLayout ----
-                      "placeholder: Coral description/instruction here! (histograms)",
+                      #"placeholder: Coral description/instruction here! (histograms)",
                       sidebarLayout(
                         
                         # Benefit sidebarPanel ----
