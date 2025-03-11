@@ -70,7 +70,8 @@ ui <- navbarPage(
                           pickerInput(inputId = "location", 
                                       label = "Select Location:", 
                                       choices = unique(hurricane_data$sublocation), #c("Florida", "Puerto Rico", "Both"), 
-                                      selected = unique(hurricane_data$sublocation), 
+                                      #selected = unique(hurricane_data$sublocation), 
+                                      selected = unique(hurricane_data$sublocation)[!unique(hurricane_data$sublocation) %in% c("Palm Beach", "Martin", "Broward")],
                                       options = list(`actions-box` = TRUE, `live-search` = TRUE),
                                       multiple = TRUE
                               ),
