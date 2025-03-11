@@ -10,6 +10,7 @@ library(markdown)
 library(fresh)
 library(sf)
 library(dplyr)
+library(rsconnect)
 
 
 #........Load shapefiles..........
