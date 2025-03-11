@@ -183,13 +183,15 @@ ui <- navbarPage(
                
                # flood map output
                # leaflet box ----
-               box(width = 12,
-                   height = 600,
-                   title = tags$strong("Flood Extent Projection Map"),
+               box(width = 30,
+                  height = 600,
+                   title = tags$strong("Map of Flood Extent Projection"),
                    
                    # leaflet output ----
-                   leafletOutput(outputId = "flood_map_output") |> 
-                     withSpinner(type = 1, color = "#18bc9c")
+                   leafletOutput(outputId = "flood_map_output",
+                                 width = "100%", 
+                                 height = "650") |> 
+                     withSpinner(type = 1, color = "#18bc9c"),
                    
                ), # END leaflet box
                

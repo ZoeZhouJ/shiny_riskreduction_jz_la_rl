@@ -1,9 +1,9 @@
 server <- function(input, output, session){
   # Define location bounds with zoom 
-  location_bounds <- list(
-    "Florida" = list(lat = 27.8, lng = -81.5, zoom = 7),  
-    "Puerto Rico" = list(lat = 18.459392, lng = -66.198783, zoom = 9)  
-  )  
+  #location_bounds <- list(
+  #  "Florida" = list(lat = 27.8, lng = -81.5, zoom = 7),  
+  #  "Puerto Rico" = list(lat = 18.459392, lng = -66.198783, zoom = 9)  
+  #)  
   
   # update zone choices based on selected location
   observe({
@@ -79,6 +79,7 @@ server <- function(input, output, session){
   output$flood_map_output <- renderLeaflet({ 
     data <- selected_data()
     
+    #............FIX THIS................
     # get bounding box to update with selected zone
     bbox <- sf::st_bbox(data$base)
     # Calculate the center of the bounding box
@@ -87,13 +88,13 @@ server <- function(input, output, session){
     
     leaflet() %>%  
       addProviderTiles(providers$Esri.WorldStreetMap) %>%  
-      setView(-67.15, 18.43, zoom = 12) %>% 
+      setView(-67.15, 18.43, zoom = 16) %>% 
       addMiniMap(toggleDisplay = TRUE,
                  minimized = FALSE) %>% 
       # Add base scenario polygons
       addPolygons(
         data = data$base,
-        #color = "#4BA4A4",  # Base scenario color
+        color = "turquoise",  # Base scenario color
         weight = 1,
         fillOpacity = 0.5,  
         group = "Base Scenario",  # Add to a group for layer control
@@ -139,7 +140,14 @@ server <- function(input, output, session){
         popup = ~paste("Return Period:", rp, "<br>",
                        "Scenario:", scenario, "<br>",
                        "Flood Area (km²):", Area_km)
-      ) 
+      ) %>%
+      addLegend(
+        position = "bottomright",
+        colors = c('turquoise', '#B251F1'),
+        labels = c("Base Scenario", "Restoration Scenario"),
+        title = "Flood Scenarios",
+        opacity = 0.7
+      )
 
   })
   
