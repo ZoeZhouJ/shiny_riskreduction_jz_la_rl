@@ -142,4 +142,44 @@ server <- function(input, output, session){
       ) 
 
   })
+  
+  hurricane_filtered <- reactive({
+    hurricane_df <- hurricane_data  
+    
+    if (input$location != "Both") {
+      hurricane_df <- hurricane_df %>% filter(location == input$location)
+    }
+    
+    # Filter by return interval
+    if (input$return_interval != "All") {
+      hurricane_df <- hurricane_df %>% filter(return_interval == as.numeric(input$return_interval))
+    }
+    
+    return(hurricane_df)
+  
+  })
+  
+  output$impact_histogram <- renderPlot ({
+    hurricane_impact <- hurricane_filtered()  # Get the filtered data
+    
+    # Check if the filtered data is empty before plotting
+    if (nrow(hurricane_impact) == 0) {
+      return(NULL)  # If data is empty, don't plot
+    }
+    
+    data_range <- range(hurricane_impact$loss_usd, na.rm = TRUE)
+    binwidth <- (data_range[2] - data_range[1]) / 15
+    
+    ggplot(hurricane_impact, aes(x = loss_usd, fill = value_type)) +
+      geom_histogram(binwidth = binwidth, color = "black", position = "dodge") +
+      labs(title = "Histogram of Hurricane Losses",
+           x = "Loss Amount (in USD)",
+           y = "Frequency") +
+      scale_fill_manual(values = c("economic" = "turquoise", "infrastructure" = "grey")) +
+      myCustomTheme() +
+      theme(legend.title = element_blank())
+  })
+  
+  
+  
 }

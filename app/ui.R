@@ -11,11 +11,16 @@ ui <- navbarPage(
          understand the relationships between natural disasters, coral reef health, and restoration benefits."),
          p("The app is divided into three main pages:"),
          tags$ul(
-           tags$li("Page 1: Hurricane Impact Explorer - Explore the economic and social impacts of hurricanes."),
-           tags$li("Page 2: Flood Extent Projection - Visualize flood extent maps based on coral cover and storm return intervals."),
+           tags$li("Page 1: Summary of Project and Data Sources - Introduction to project, data sources, and project exploration."),
+           tags$li("Page 2: Hurricane Impact Explorer - Explore the economic and social impacts of hurricanes."),
+           tags$li("Page 3: Flood Extent Projection - Visualize flood extent maps based on coral cover and storm return intervals."),
          )
              ),#END sidebarPanel
          mainPanel(
+           h3("Summary"),
+           p("Coastal communities worldwide are increasingly vulnerable to hurricanes, coastal flooding, and sea-level rise, leading to severe economic, social, and environmental consequences. 
+             Natural solutions, such as coral reef restoration, are gaining attention as cost-effective measures to mitigate these risks while promoting ecological resilience.
+             This project explores how coral reef restoration can provide both economic and social benefits by reducing storm-related flooding, protecting infrastructure, and enhancing coastal resilience."),
            h3("Data Sources"),
            p("This app uses data from the following authoritative sources:"),
            tags$ol(
@@ -61,21 +66,27 @@ ui <- navbarPage(
                         # Impact sidebarPanel ----
                         sidebarPanel(
                           "placeholder: impact histogram inputs here",
-                          # channel type pickerinput ----
-                          # pickerInput(inputId = "location_input",
-                          #             label = "Select location(s):",
-                          #             choices = unique(df$location),
-                          #             #selected = c("Florida", "Puerto Rico"),
-                          #             multiple = TRUE,
-                          #             options = pickerOptions(actionBox = TRUE)
-                          # ) # END pickerInput
+                          # channel type pickerinput ---- location
+                          pickerInput("location", "Select Location:", 
+                                      choices = c("Florida", "Puerto Rico", "Both"), 
+                                      selected = "Both", 
+                                      options = list(`actions-box` = TRUE, `live-search` = TRUE),
+                                      multiple = FALSE
+                              ),
+                          
+                          # PickerInput for return_interval
+                          pickerInput("return_interval", "Select Return Interval:", 
+                                      choices = c("10", "50", "100", "500", "All"), 
+                                      selected = "All", 
+                                      options = list(`actions-box` = TRUE, `live-search` = TRUE),
+                                      multiple = FALSE)
                         ), # END Impact sidebarPanel
                         
                         # Impact mainPanel ----
                         mainPanel(
                           "placeholder: impact histograms go here",
                           # impact histogram output
-                          plotOutput(outputId = "impact_histogram_output")
+                          plotOutput(outputId = "impact_histogram")
                         ), # END Impact mainPanel
                       ), # END impact sidebarLayout
              ), # END Impact tabPanel
