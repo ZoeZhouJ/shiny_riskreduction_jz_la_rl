@@ -88,7 +88,7 @@ server <- function(input, output, session){
     
     leaflet() %>%  
       addProviderTiles(providers$Esri.WorldStreetMap) %>%  
-      setView(-67.1562347, 18.41090066, zoom = 15) %>% 
+      #setView(-67.1562347, 18.41090066, zoom = 15) %>% 
       addMiniMap(toggleDisplay = TRUE,
                  minimized = FALSE) %>% 
       # Add base scenario polygons
