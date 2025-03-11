@@ -152,7 +152,18 @@ ui <- navbarPage(
                            selected = "base",
                            #multiple = TRUE,
                            options = pickerOptions(actionsBox = TRUE)),
-               
+               #helpText("Choose from three coastal restoration scenarios: 'ecological_25' with 0.25m-high corals on a 25m-wide reef, 'structural_25' with a 1m-high structure and 0.25m corals on a 25m-wide reef, or 'structural_05' with a 1m-high structure and 0.25m corals on a 5m-wide reef. Default scenario is the baseline condition. Select to compare different coastal management strategies."),
+               helpText(
+                 tags$div(
+                   tags$p("Choose from three coastal restoration approaches:"),
+                   tags$ul(
+                     tags$li(tags$strong("Ecological_25:"), "0.25m-high corals on 25m-wide reef"),
+                     tags$li(tags$strong("Structural_25:"), "1m-high structure with 0.25m corals on 25m-wide reef"),
+                     tags$li(tags$strong("Structual_05:"), "1m-high structure with 0.25m corals on 5m-wide reef")
+                   ),
+                   tags$p("Default scenario provides baseline comparison.")
+                 )
+               ),
                radioButtons(inputId = "return_interval_input",
                             label = "Select Return Period (years):",
                             choices = return_periods,
@@ -160,7 +171,12 @@ ui <- navbarPage(
                
                
                
-               helpText("Flood scenarios are based on wave-driven total water levels for various return periods.")
+               helpText(
+                 tags$div(
+                   tags$p("Choose the hydrological return period representing average time between events: Longer periods indicate rarer, more extreme events. Default is 500-year interval. Select to define event probability.")
+                 )
+               )
+               #helpText("Choose the hydrological return period for your analysis. The return period represents the average time interval between events of a specific magnitude. Select from available options, with a default of 500 years. Longer periods indicate rarer events.")
              ), # END flood sidebarPanel
              # flood mainPanel
              mainPanel(

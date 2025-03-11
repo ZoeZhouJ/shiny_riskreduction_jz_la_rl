@@ -93,7 +93,7 @@ server <- function(input, output, session){
       # Add base scenario polygons
       addPolygons(
         data = data$base,
-        color = "#4BA4A4",  # Base scenario color
+        #color = "#4BA4A4",  # Base scenario color
         weight = 1,
         fillOpacity = 0.5,  
         group = "Base Scenario",  # Add to a group for layer control
@@ -123,7 +123,7 @@ server <- function(input, output, session){
       ) %>% 
       addPolygons(
         data = data$base,
-        color = '#4BA4A4',
+        color = 'turquoise',
         weight = 1,
         fillOpacity = 0.5,
         popup = ~paste("Return Period:", rp, "<br>",
