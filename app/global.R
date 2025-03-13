@@ -37,9 +37,15 @@ load_shapefile <- function(return_period, scenario, location_folder, location) {
 #.........Load Tabular Data..........
 #hurricane data
 data_folder2 <- "../raw-data"
-file_path <- file.path(data_folder2, "hurricane_loss_data.csv")
-hurricane_data <- read.csv(file_path)
+hurricane_file_path <- file.path(data_folder2, "hurricane_loss_data.csv")
+hurricane_data <- read.csv(hurricane_file_path)
 
+#coral reef benefit data
+benefit_file_path <- file.path(data_folder2, "reef_benefits.csv")
+reef_benefits <- read.csv(benefit_file_path)
+ 
+reef_clean <- pivot_longer(reef_benefits, cols = c("buildings", "economic", "total_value"), names_to = "value_type", values_to = "value_usd")
+  
 
 
 #............custom ggplot theme (apply to both plots)...........

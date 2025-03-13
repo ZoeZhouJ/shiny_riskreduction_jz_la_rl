@@ -104,15 +104,26 @@ ui <- navbarPage(
                         
                         # Benefit sidebarPanel ----
                         sidebarPanel(
-                          "placeholder: Benefit histogram inputs here",
-                          # channel type pickerinput ----
-                          # pickerInput(inputId = "benefit_input",
-                          #             label = "Select types of benefit:",
-                          #             choices = unique(df$columns_names),
-                          #             #selected = c("Social", "Building"),
-                          #             multiple = TRUE,
-                          #             options = pickerOptions(actionBox = TRUE)
-                          # ) # END pickerInput
+                          #pickerInput --- location
+                          pickerInput(inputId = "location", 
+                          label = "Select Location:", 
+                          choices = unique(reef_clean$sublocation), #c("Florida", "Puerto Rico", "Both"), 
+                          #selected = unique(hurricane_data$sublocation), 
+                          selected = unique(reef_clean$sublocation),
+                          options = list(`actions-box` = TRUE, `live-search` = TRUE),
+                          multiple = TRUE
+                        ), #END Pickerinput -- location
+                        
+                        #pickerInput --- benefit category
+                        pickerInput("value_type", "Select Benefit Category:", 
+                                    choices = unique(reef_clean$value_type), 
+                                    selected = unique(reef_clean$value_type),
+                                    options = list(`actions-box` = TRUE, `live-search` = TRUE),
+                                    multiple = FALSE
+                                    
+                        ) #END Pickerinput -- benefit category
+                        
+                        
                         ), # END Benefit sidebarPanel
                         
                         # Benefit mainPanel ----
