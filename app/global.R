@@ -13,6 +13,7 @@ library(dplyr)
 library(rsconnect)
 library(DT)
 library(readr)
+library(tidymodels)
 
 
 #........Load shapefiles..........
