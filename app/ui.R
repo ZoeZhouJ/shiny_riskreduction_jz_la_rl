@@ -89,7 +89,8 @@ ui <- navbarPage(
                         mainPanel(
                           #"placeholder: impact histograms go here",
                           # impact histogram output
-                          plotOutput(outputId = "impact_histogram")
+                          plotOutput(outputId = "impact_histogram"),
+                          tableOutput(outputId = "ANOVA_output")
                         ), # END Impact mainPanel
                       ), # END impact sidebarLayout
              ), # END Impact tabPanel

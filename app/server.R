@@ -1,9 +1,4 @@
 server <- function(input, output, session){
-  # Define location bounds with zoom 
-  #location_bounds <- list(
-  #  "Florida" = list(lat = 27.8, lng = -81.5, zoom = 7),  
-  #  "Puerto Rico" = list(lat = 18.459392, lng = -66.198783, zoom = 9)  
-  #)  
   
   # update zone choices based on selected location
   observe({
@@ -79,13 +74,6 @@ server <- function(input, output, session){
   output$flood_map_output <- renderLeaflet({ 
     data <- selected_data()
     
-    #............FIX THIS................
-    # get bounding box to update with selected zone
-    bbox <- sf::st_bbox(data$base)
-    # Calculate the center of the bounding box
-    center_lat <- (bbox["ymin"] + bbox["ymax"]) / 2
-    center_lng <- (bbox["xmin"] + bbox["xmax"]) / 2
-    
     leaflet() %>%  
       addProviderTiles(providers$Esri.WorldStreetMap) %>%  
       #setView(-67.1562347, 18.41090066, zoom = 15) %>% 
@@ -104,9 +92,7 @@ server <- function(input, output, session){
 ",
 "Flood Area (km²):", Area_km)
       ) 
-      
-      #addCircleMarkers(lng = -81.5, lat = 27.8, popup = "Florida") |>
-      #addCircleMarkers(lng = -66.5, lat = 18.2, popup = "Puerto Rico")
+
   })
   
   # Observe changes in the selected data and update the map
@@ -151,6 +137,7 @@ server <- function(input, output, session){
 
   })
   
+  # Impact page output
   hurricane_filtered <- reactive({
       hurricane_df <- hurricane_data %>% 
         filter(sublocation %in% input$location) %>% 
@@ -179,7 +166,6 @@ server <- function(input, output, session){
         legend.title = element_blank(),
         axis.text.x = element_text(angle = 45, hjust =1))
   })
-  
   
   
 }
