@@ -63,7 +63,30 @@ result <- log_fit %>%
   extract_fit_parsnip() %>% 
   tidy()
 result
+
+# ---- evaluation ----
+
+predicted_probs <- predict(log_fit, new_data = data, type = "prob")
+predicted_classes <- predict(log_fit, new_data = data, type = "class")
+data_pred <- data %>% 
+  mutate(pred_prob = predicted_probs$.pred_1) %>% 
+  mutate(pred_class = predicted_classes$.pred_class)
+
+accuracy(data_pred, truth = flood, estimate = pred_class)
+
+ggplot(data_pred, aes(x = pred_prob, fill = flood)) +
+  geom_density(alpha = 0.5) +
+  labs(
+    title = "Density Plot of Predicted Probabilities",
+    x = "Predicted Probability",
+    y = "Density"
+  ) +
+  theme_minimal()
+
+
 # A Demographic Index is based on the average of two demographic indicators; Percent Low-Income and Percent Minority.
+
+
 # ---- proper analysis steps ----
 # Check needs for imputation 
 # Check class imbalance
