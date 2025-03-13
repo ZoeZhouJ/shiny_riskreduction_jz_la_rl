@@ -96,7 +96,7 @@ server <- function(input, output, session){
   })
   
   # Observe changes in the selected data and update the map
-shiny::observe({
+  shiny::observe({
     data <- selected_data()
     
     bbox <- sf::st_bbox(data$base)  # Use the base scenario data for the bounding box
