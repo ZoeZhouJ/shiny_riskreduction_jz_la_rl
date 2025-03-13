@@ -4,7 +4,7 @@ library(tidyverse)
 library(bslib)
 library(shinyWidgets)
 library(leaflet)
-library(shinydashboard)
+
 library(shinycssloaders)
 library(markdown)
 library(fresh)
@@ -14,7 +14,7 @@ library(rsconnect)
 library(DT)
 library(readr)
 library(tidymodels)
-
+library(shinydashboard)
 
 #........Load shapefiles..........
 # Define inputs

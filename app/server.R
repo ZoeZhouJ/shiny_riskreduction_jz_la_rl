@@ -1,5 +1,4 @@
 server <- function(input, output, session){
-  
   # update zone choices based on selected location
   observe({
     req(input$location_input)
@@ -8,6 +7,7 @@ server <- function(input, output, session){
     } else {
       "PuertoRico_Current_Restored"
     }
+    
     location <- if (input$location_input == "Florida") {
       "Florida"
     } else {
