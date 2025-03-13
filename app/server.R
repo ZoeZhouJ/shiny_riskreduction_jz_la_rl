@@ -1,7 +1,7 @@
 server <- function(input, output, session){
   
   # update zone choices based on selected location
-  observe({
+  shiny::observe({
     req(input$location_input)
     location_folder <- if (input$location_input == "Florida") {
       "Florida_Current_Restored"
@@ -96,7 +96,7 @@ server <- function(input, output, session){
   })
   
   # Observe changes in the selected data and update the map
-  observe({
+shiny::observe({
     data <- selected_data()
     
     bbox <- sf::st_bbox(data$base)  # Use the base scenario data for the bounding box
