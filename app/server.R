@@ -1,6 +1,6 @@
 server <- function(input, output, session){
   # update zone choices based on selected location
-  observe({
+  shiny::observe({
     req(input$location_input)
     location_folder <- if (input$location_input == "Florida") {
       "Florida_Current_Restored"
@@ -96,7 +96,7 @@ server <- function(input, output, session){
   })
   
   # Observe changes in the selected data and update the map
-  observe({
+  shiny::observe({
     data <- selected_data()
     
     bbox <- sf::st_bbox(data$base)  # Use the base scenario data for the bounding box
@@ -144,7 +144,7 @@ server <- function(input, output, session){
         filter(return_interval == as.numeric(input$return_interval))
   })
   
-  output$impact_histogram <- renderPlot ({
+  output$impact_histogram <- renderPlot({
     hurricane_impact <- hurricane_filtered()  # Get the filtered data
     
     # Check if the filtered data is empty before plotting
@@ -167,5 +167,34 @@ server <- function(input, output, session){
         axis.text.x = element_text(angle = 45, hjust =1))
   })
   
+  # Benefits page output
+  reef_filtered <- reactive({
+    reef_df <- reef_clean %>% 
+      filter(sublocation %in% input$location)
+  })
+  
+  output$benefit_histogram_output <- renderPlot({
+    coral_benefit <- reef_filtered() # Get the filtered data
+     
+    
+    # Check if the filtered data is empty before plotting
+    if (nrow(coral_benefit) == 0) {
+      return(NULL)  # If data is empty, don't plot
+    }
+    
+    data_range <- range(coral_benefit$value_usd, na.rm = TRUE)
+    binwidth <- (data_range[2] - data_range[1]) / 15
+    
+    ggplot(coral_benefit, aes(x= sublocation, y = value_usd, fill = value_type)) +
+      geom_bar(stat = "identity", position = "dodge") +
+      labs(title = "Histogram of Benefits from Coral Reef Restoration",
+           x = "Locations",
+           y = "Benefit Amount (in USD)") +
+      scale_fill_manual(values = c("economic" = "turquoise", "buildings" = "grey", "total_value" = "forestgreen")) +
+      myCustomTheme() +
+      theme(
+        legend.title = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust =1))
+    })
   
 }
