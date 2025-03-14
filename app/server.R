@@ -197,4 +197,69 @@ server <- function(input, output, session){
         axis.text.x = element_text(angle = 45, hjust =1))
     })
   
+  # ---- Page 3 reactive table ----
+  # select input
+  ej_state_df <- reactive({
+    req(input$state_input)
+    ej_state <- ej_flood_df[ej_flood_df$STATE_NAME == input$state_input, ]
+    
+    ej_state <- ej_state %>% 
+      select(OVER64PCT, D2_DSLPM, D2_RSEI_AIR, D2_PTRAF, D2_PTSDF, D2_PWDIS, D2_NO2, DEMOGIDX_2, flood) %>% 
+      rename(
+        Over_Age64= OVER64PCT,
+        Diesel_PM = D2_DSLPM,
+      Air_Toxics = D2_RSEI_AIR,
+      Traffic_Proximity = D2_PTRAF,
+      Hazardous_Waste = D2_PTSDF,
+      WasteWater_Discharge = D2_PWDIS,
+      NO2_Concentration = D2_NO2,
+      Demographic_Index = DEMOGIDX_2,
+      Flood = flood
+      )
+    
+    ej_state$Flood <- factor(ej_state$Flood)
+    as.data.frame(ej_state)
+  })
+  
+  # Reactive logistic model
+  logistic_md <- reactive({
+    data <- ej_state_df()
+
+    # Define model
+    log_md <- logistic_reg() %>%
+      set_engine('glm') %>%
+      set_mode('classification')
+    
+    # Recipe
+    recipe <- recipe(Flood ~ ., data = data)
+    
+    # Workflow
+    log_workflow <- workflow() %>%
+      add_recipe(recipe) %>%
+      add_model(log_md)
+    
+    # Fit model
+    log_fit <- fit(log_workflow, data = data)
+    
+    log_fit
+    
+  })
+  # Render reactive table
+  output$table_output <- DT::renderDataTable({
+    log_fit <- logistic_md()
+    # Extract and tidy results
+    result <- log_fit %>% 
+      extract_fit_parsnip() %>% 
+      tidy() %>% 
+      transmute(
+        Term = term,
+        `Odds Ratio` = round(exp(estimate), 3),
+        `% Change in Odds of Flooding` = round((exp(estimate) - 1) * 100, 1), 
+        `Std. Error` = round(std.error, 3),
+        Statistic = round(statistic, 3),
+        `P-Value` = scales::pvalue(p.value, accuracy = 0.001)
+      )
+    
+  })
+  
 }

@@ -244,7 +244,34 @@ ui <- dashboardPage(
                                       height = "650") %>% 
                           withSpinner(type = 1, color = "#18bc9c")  # Loading spinner
                       ) # END box
-                    ) # END fluidRow
+                    ), # END fluidRow
+                    
+                    # Add fluidRow for reactive table
+                    fluidRow(
+                      column( 
+                        width = 12,
+                        
+                        selectInput(inputId = 'state_input',
+                                    label = 'Select State to Study Environmental Justice',
+                                    choices = c("FLORIDA", "PUERTO RICO"),
+                                    selected = "PUERTO RICO",
+                                    multiple = FALSE
+                                    )
+                      )
+                    ), # END fluidRow for reactive table input
+                    
+                    # FluidRow for reactive table output
+                    fluidRow(
+                      box(
+                        width = 12,
+                        title = tags$strong("Logistic Regression Model Coefficients"),
+                        
+                        # Table Output Widget for Model Results
+                        DT::dataTableOutput(outputId = "table_output") %>% 
+                          withSpinner(type = 1, color = "#18bc9c")  # Loading spinner
+                      ) # END box
+                    ) # END fluidRow for reactive table output
+                  
                   ) # END mainPanel
                 ) # END sidebarLayout
               ) # END fluidPage

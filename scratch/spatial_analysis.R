@@ -25,22 +25,23 @@ ej_projected <- st_transform(ej_sf, st_crs(florida_data))
 ej_projected$flood <- ifelse(lengths(st_intersects(ej_projected, flood_sf)) > 0, 1, 0)
 
 # Save to directory
-st_write(ej_projected, "~/Bren/244 Advance data/shiny_riskreduction/raw-data/clean/ej_flood.shp")
+st_write(ej_projected, "~/Bren/244 Advance data/shiny_riskreduction/raw-data/clean/ej_flood.gpkg", append=FALSE)
+ej_flood <- st_read("~/Bren/244 Advance data/shiny_riskreduction/raw-data/clean/ej_flood.gpkg")
 
 # ---- Perform Logistic classification ----
 # Select features
-data <- ej_projected %>% 
-  select(STATE_NAME, UNEMPPCT, LOWINCPCT, UNDER5PCT, OVER64PCT, AREAWATER, DEMOGIDX_2, flood)
+data <- st_drop_geometry(data)
+
+data <- ej_flood %>% #ej_projected %>% 
+  select(STATE_NAME, D2_DSLPM, D2_RSEI_AIR, D2_PTRAF, D2_PTSDF, D2_PWDIS, D2_NO2, DEMOGIDX_2, flood)
 data <- st_drop_geometry(data)
 data$flood <- factor(data$flood)
-data$STATE_NAME <- factor(data$STATE_NAME)
-
-# Balance the dataset (optional)
-#data <- ovun.sample(flood ~ UNEMPPCT + LOWINCPCT + UNDER5PCT, data = data, method = "both")$data
-
-# Scale numeric predictors
-data <- data %>%
-  mutate(across(where(is.numeric), scale))
+#data$STATE_NAME <- factor(data$STATE_NAME)
+data <- data %>% 
+  filter(STATE_NAME == "PUERTO RICO")
+data <- data %>% select(-STATE_NAME)
+# Remove predictors with all missing values
+#data <- data %>% select_if(~ !all(is.na(.)))
 # Define model 
 log_md <- logistic_reg() %>% 
   set_engine('glm') %>% 

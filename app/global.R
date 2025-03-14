@@ -32,8 +32,10 @@ load_shapefile <- function(return_period, scenario, location_folder, location) {
     shapefile <- st_transform(shapefile, crs = 4326)
   }
 }
-
-
+#.........Load EJScreen shapefile...............
+ej_flood <- st_read("../raw-data/clean/ej_flood.gpkg")
+ej_flood_df <- st_drop_geometry(ej_flood)
+ej_flood_df$STATE_NAME <- factor(ej_flood_df$STATE_NAME)
 #.........Load Tabular Data..........
 #hurricane data
 data_folder2 <- "../raw-data"
