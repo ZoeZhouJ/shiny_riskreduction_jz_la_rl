@@ -70,11 +70,20 @@ ui <- dashboardPage(
                      and the benefits of coral restoration. It is designed to help researchers, policymakers, and stakeholders 
                      understand the relationships between natural disasters, coral reef health, and restoration benefits."),
                   
-                  p("The app is divided into three main pages:"),
-                  tags$ul(
-                    tags$li("Page 1: Summary of Project and Data Sources - Introduction to project, data sources, and project exploration."),
-                    tags$li("Page 2: Hurricane Impact Explorer - Explore the economic and social impacts of hurricanes."),
-                    tags$li("Page 3: Flood Extent Projection - Visualize flood extent maps based on coral cover and storm return intervals.")
+                  p("The app is divided into four main tabs:"),
+                  tags$ol(
+                    tags$li(
+                      strong("Home Tab -"),
+                      "Summary of Project and Data Sources - Introduction to project, and project exploration."),
+                    tags$li(
+                      strong("Hurricane Impact Explorer Tab -"),
+                      "Explore the economic and social impacts of hurricanes."),
+                    tags$li(
+                      strong("Flood Extent Projection Tab -"),
+                      "Visualize flood extent maps based on coral cover and storm return intervals."),
+                    tags$li(
+                      strong("Data Sources Tab -"),
+                      "Data Information and Sources"),
                   ), 
                   
                   img(src="https://eos.org/wp-content/uploads/2023/11/hurricane-lee.jpg", width="800px")
@@ -95,7 +104,10 @@ ui <- dashboardPage(
                   
                   # Hurricane Impact Tab ----
                   tabPanel(title = "Hurricane Impact",
-                           
+                           "Hurricane impact is displayed as monetary values in 2010 USD for various locations in Florida and Puerto Rico. 
+                           Infrastructure impacts represent loss in value from damaged buildings, whereas economic impacts represent loss from
+                           lost wages, work, business revenues, etc. They were determined from flood projection models at different return_intervals.",
+                           "Select a location and return interval to determine monetary impacts from hurricanes.",
                            sidebarLayout(
                              sidebarPanel(
                                
@@ -133,7 +145,7 @@ ui <- dashboardPage(
                   
                   # Benefit Tab ----
                   tabPanel(title = "Benefit",
-                           
+                           "Benefits of coral reef restoration are displayed as monetary values in 2023 USD for various locations in Florida and Puerto Rico. Infrastructure benefits represent gains in value from protected buildings, whereas economic impacts represent gains from protected wages, work, business revenues, etc. Total value is a sum of both. Select a location and benefit category to understand the benefits of coral reef restoration at various sites.",
                            sidebarLayout(
                              sidebarPanel(
                                pickerInput(inputId = "location", 
@@ -281,10 +293,8 @@ ui <- dashboardPage(
       # Data Sources ----
       tabItem(tabName = "data",
               fluidPage(
-                titlePanel("Data Information and Sources"),
+                titlePanel("Data Sources"),
                 mainPanel(
-                  h3("Data Information"),
-                  p("WILL INSERT TEXT AFTER SENT"),
                   h3("Data Sources"),
                   p("This app uses data from the following authoritative sources:"),
                   tags$ol(
