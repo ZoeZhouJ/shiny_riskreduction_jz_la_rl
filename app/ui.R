@@ -305,7 +305,13 @@ ui <- dashboardPage(
                       " Science Advances - ",
                       a("Restoration Benefit Study", href = "https://www.science.org/doi/10.1126/sciadv.adn4004", target = "_blank"),
                       ". This study quantifies the economic and social benefits of coral restoration, including flood risk reduction and coastal resilience."
-                    )
+                    ),
+                    tags$li(
+                      strong("EJScreen Indexes:"),
+                      " United States Environmental Protection Agency - ",
+                      a("Environmental Justice Mapping and Screening", href = "https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/RLR5AX", target = "_blank"),
+                      ". The tool offers EJ (2-factor) and supplemental (5-factor) indexes by combining environmental and socioeconomic indicators, using Census block groups as the basic geographic unit."
+                    ),
                   ),
                   h3("Acknowledgments"),
                   p("This app is built using publicly available datasets and reports from the USGS and Science Advances. 
