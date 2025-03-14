@@ -170,7 +170,9 @@ server <- function(input, output, session){
   # Benefits page output
   reef_filtered <- reactive({
     reef_df <- reef_clean %>% 
-      filter(sublocation %in% input$location)
+      filter(sublocation %in% input$location) %>%
+      filter(value_type == input$value_type)
+    
   })
   
   output$benefit_histogram_output <- renderPlot({

@@ -145,17 +145,17 @@ ui <- dashboardPage(
                                            multiple = TRUE
                                ), #END Pickerinput -- location
                                
+      
+                               
                                #pickerInput --- benefit category
                                pickerInput("value_type", "Select Benefit Category:", 
                                            choices = unique(reef_clean$value_type), 
                                            selected = unique(reef_clean$value_type),
                                            options = list(`actions-box` = TRUE, `live-search` = TRUE),
-                                           multiple = FALSE
-                                           
-                               ) #END Pickerinput -- benefit category
+                                           multiple = TRUE
+                               ), #END Pickerinput -- benefit category
                                
-                               
-                               
+  
                              ), # END sidebarPanel
                              
                              mainPanel(
